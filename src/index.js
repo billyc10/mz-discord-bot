@@ -62,7 +62,7 @@ client.on('message', msg => {
             .setTitle(`Here lies ${target.toUpperCase()}`)
             .setDescription('Gone but not forgotten, they will be sorely missed.')
             .addField(dateStr, 'Rest In Pieces')
-            .setImage('https://imgur.com/a/zaCKZxN')
+            .setImage('https://i.imgur.com/kT7Uhu2.png')
             .setTimestamp()
 
         msg.channel.send(ripText);
