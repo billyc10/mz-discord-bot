@@ -30,8 +30,13 @@ function fallguys_message() {
     return inject_mention(message);
 }
 
+function league_message() {
+    return pick_random(content.league);
+}
+
 module.exports = {
     jeff_message,
     valorant_message,
-    fallguys_message
+    fallguys_message,
+    league_message
 }

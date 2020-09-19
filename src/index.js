@@ -13,7 +13,7 @@ client.on('ready', () => {
 client.on('message', msg => {
     console.log(msg.content);
 
-    if (msg.author == users.self) return;
+    if (msg.author.bot) return;
 
     const message = msg.content.toLowerCase();
 
@@ -34,10 +34,38 @@ client.on('message', msg => {
         return;
     }
 
+    // If someone mentions league
+    if (message.includes('league')) {
+        msg.channel.send(messageService.league_message());
+        return;
+    }
+
     // If amanda mentions nichol (probably fall guys)
     if (msg.author == users.amanda && msg.content.includes(users.nichol)) {
         msg.channel.send(messageService.fallguys_message());
         return;
+    }
+
+    // If someone says RIP...
+    if (message.includes('rip ')) {
+        words = message.split(' ');
+        index = words.findIndex((x) => x == 'rip') + 1;
+        
+        // the thing that passed away :'()
+        target = words[index];
+
+        const today = new Date();
+        const dateStr = `${today.getDate()}-${today.getMonth()+1}-${today.getFullYear()}`;
+
+        const ripText = new Discord.MessageEmbed()
+            .setColor('#0099ff')
+            .setTitle(`Here lies ${target.toUpperCase()}`)
+            .setDescription('Gone but not forgotten, they will be sorely missed.')
+            .addField(dateStr, 'Rest In Pieces')
+            .setImage('https://imgur.com/a/zaCKZxN')
+            .setTimestamp()
+
+        msg.channel.send(ripText);
     }
 
     // If xavier messages, test if he's gay
