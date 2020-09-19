@@ -16,6 +16,13 @@ client.on('message', msg => {
     // Test message
     if (msg.content.startsWith(prefix)) {
         msg.reply('yes I\'m alive');
+        return;
+    }
+
+    // amanda
+    if (message.includes('amanda') || message.includes(users.amanda)) {
+        msg.channel.send('Amanda? She\'s pretty cool I must say!');
+        return;
     }
 
     // If Jeffrey speaks
@@ -46,6 +53,7 @@ client.on('message', msg => {
         const FText = new Discord.MessageEmbed()
             .setImage('https://i.imgur.com/8SngqSs.png')
         msg.channel.send(FText);
+        return;
     }
 
     // If someone says RIP...
@@ -68,6 +76,7 @@ client.on('message', msg => {
             .setTimestamp()
 
         msg.channel.send(ripText);
+        return;
     }
 });
 
