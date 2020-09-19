@@ -42,6 +42,12 @@ client.on('message', msg => {
         return;
     }
 
+    if (msg.content == 'F') {
+        const FText = new Discord.MessageEmbed()
+            .setImage('https://i.imgur.com/8SngqSs.png')
+        msg.channel.send(FText);
+    }
+
     // If someone says RIP...
     if (message.includes('rip ')) {
         words = message.split(' ');
