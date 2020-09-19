@@ -7,7 +7,7 @@ yarn-error.log*
 lerna-debug.log*
 
 # secrets
-src/config.json
+src/secrets/
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
