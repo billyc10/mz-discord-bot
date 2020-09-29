@@ -16,7 +16,8 @@ function inject_mention(message) {
 }
 
 function jeff_message() {
-    message = pick_random(content.jeff_messages);
+    message = "Scary Splash, Sporty Splash, Baby Splash, Ginger Splash, Posh Splash. Which Splash Boy are you?";
+    //message = pick_random(content.jeff_messages);
     return inject_mention(message);
 }
 
