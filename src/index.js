@@ -43,6 +43,11 @@ client.on('message', msg => {
         return;
     }
 
+    if (message.includes('oce')) {
+        msg.channel.send(':peepoRun: OCE WILL NOT BE SILENCED :peepoRun: OCE WILL NOT BE SILENCED :peepoRun: OCE WILL NOT BE SILENCED :peepoRun: OCE WILL NOT BE SILENCED :peepoRun: OCE WILL NOT BE SILENCED');
+        return;
+    }
+
     // If amanda mentions nichol (probably fall guys)
     if (msg.author == users.amanda && msg.content.includes(users.nichol)) {
         msg.channel.send(messageService.fallguys_message());
