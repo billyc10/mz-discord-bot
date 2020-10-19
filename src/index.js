@@ -1,22 +1,60 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
+const axios = require('axios').default;
+
 const {users, token, prefix} = require('./config').config;
 const messageService = require('./messageService');
+const poeService = require('./poeService');
+
+var league = 'Heist';
 
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
 });
 
-client.on('message', msg => {
+client.on('message', async msg => {
     if (msg.author.bot) return;
 
     const message = msg.content.toLowerCase();
 
     // Test message
     if (msg.content.startsWith(prefix)) {
-        msg.reply('yes I\'m alive');
-        return;
+        const args = msg.content.slice(prefix.length).trim().split(' ');
+        const command = args.shift().toLowerCase();
+        
+        if(command == 'woah') {
+            msg.reply('yes I\'m alive');
+            return;
+        }
+
+        if(command == 'price' || command == 'p') {
+            const queryString = args.join(' ');
+
+            let response = await poeService.queryItem(queryString);
+
+            const searchResults = new Discord.MessageEmbed()
+                .setColor('#0099ff')
+                .setTitle(`Search "${queryString}" in ${league}`)
+                .setURL(response.url)
+                
+                .setTimestamp()
+            
+            if (response.itemList.length > 0) {
+                searchResults
+                    .setDescription(`Top ${response.itemList.length} results (total ${response.total})`)
+                    .setThumbnail(response.itemList[0].icon)
+                response.itemList.forEach( item => {
+                    searchResults.addField(`${item.name[0]} (${item.price})`, `${item.name[1]}`)
+                });
+            } else {
+                searchResults.setDescription('No results found');
+            }
+            
+            msg.channel.send(searchResults);
+        }
+
+        
     }
 
     // amanda

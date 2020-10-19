@@ -20,5 +20,8 @@
   "homepage": "https://github.com/billyc10/discord-test-bot#readme",
   "devDependencies": {
     "discord.js": "^12.3.1"
+  },
+  "dependencies": {
+    "axios": "^0.20.0"
   }
 }
