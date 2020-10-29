@@ -63,12 +63,6 @@ client.on('message', async msg => {
         return;
     }
 
-    // If Jeffrey speaks
-    if (msg.author == users.jeffrey) {
-        msg.channel.send(messageService.jeff_message());
-        return;
-    }
-
     // If someone mentions valorant
     if (message.includes('valorant') || message.includes('val')) {
         msg.channel.send(messageService.valorant_message());
