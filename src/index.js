@@ -7,7 +7,7 @@ const {users, token, prefix} = require('./config').config;
 const messageService = require('./messageService');
 const poeService = require('./poeService');
 
-var league = 'Heist';
+var league = 'Expedition';
 
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
